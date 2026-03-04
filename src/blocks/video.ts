@@ -4,7 +4,7 @@ import {
   text,
   number,
   boolean,
-} from '@nextlake/schema';
+} from '@verevoir/schema';
 
 export const videoBlock = defineBlock({
   name: 'video',

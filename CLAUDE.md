@@ -1,16 +1,16 @@
-# @nextlake/media — Media Display
+# @verevoir/media — Media Display
 
 Display concern for NextLake assets — deterministic URL builder for imgproxy, AssetSource abstraction, and rendering helpers.
 
 ## What It Does
 
 - **URL Builder** — `buildImageUrl()` and `buildSrcSet()` produce deterministic imgproxy URLs from asset metadata and resize options. Pure functions, no side effects.
-- **AssetSource** — pluggable interface for resolving asset metadata. Decoupled from `@nextlake/assets` via structural typing (duck typing).
+- **AssetSource** — pluggable interface for resolving asset metadata. Decoupled from `@verevoir/assets` via structural typing (duck typing).
 - **Adapter** — `createAssetSource()` bridges a NextLake `AssetManager` to the `AssetSource` interface. Developer provides a `blobUrl` function to map blob keys to HTTP URLs.
 
 ## Design Principles
 
-- **No runtime dependency on `@nextlake/assets`** — uses structural typing. The adapter accepts any object matching the `AssetManagerLike` shape.
+- **No runtime dependency on `@verevoir/assets`** — uses structural typing. The adapter accepts any object matching the `AssetManagerLike` shape.
 - **Display, not persistence** — this package never stores data. It reads asset metadata and produces URLs.
 - **Unsigned URLs for v1** — `ImgproxyConfig` reserves `key`/`salt` fields for future HMAC signing.
 - **Deterministic URLs** — same inputs always produce the same URL, enabling CDN caching.
@@ -18,9 +18,9 @@ Display concern for NextLake assets — deterministic URL builder for imgproxy, 
 ## Quick Example
 
 ```typescript
-import { createAssetSource, buildImageUrl } from '@nextlake/media';
-import { AssetManager, MemoryBlobStore } from '@nextlake/assets';
-import { MemoryAdapter } from '@nextlake/storage';
+import { createAssetSource, buildImageUrl } from '@verevoir/media';
+import { AssetManager, MemoryBlobStore } from '@verevoir/assets';
+import { MemoryAdapter } from '@verevoir/storage';
 
 // Bridge AssetManager to AssetSource
 const source = createAssetSource({
@@ -63,4 +63,4 @@ make run     # No-op (library)
 ## Dependencies
 
 - **No** runtime dependencies
-- **No** dependency on `@nextlake/assets` (structural typing only)
+- **No** dependency on `@verevoir/assets` (structural typing only)

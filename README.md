@@ -1,19 +1,19 @@
-# @nextlake/media
+# @verevoir/media
 
 Display concern for NextLake assets — deterministic imgproxy URL builder, AssetSource abstraction, image/video block definitions, and React editor components.
 
 ## What It Does
 
 - **URL Builder** — `buildImageUrl()` and `buildSrcSet()` produce deterministic imgproxy URLs from asset metadata and resize options.
-- **AssetSource** — pluggable interface for resolving asset metadata. Decoupled from `@nextlake/assets` via structural typing.
-- **Block Definitions** — `imageBlock` and `videoBlock` via `defineBlock` from `@nextlake/schema`.
+- **AssetSource** — pluggable interface for resolving asset metadata. Decoupled from `@verevoir/assets` via structural typing.
+- **Block Definitions** — `imageBlock` and `videoBlock` via `defineBlock` from `@verevoir/schema`.
 - **React Components** — `ImageField` (asset picker + preview), `HotspotOverlay` (click-to-set focal point), context providers.
 - **Rendering Helper** — `imageProps()` returns ready-made `<img>` tag attributes.
 
 ## Install
 
 ```bash
-npm install @nextlake/media
+npm install @verevoir/media
 ```
 
 Peer dependencies: `react`, `react-dom` (optional — only needed for React components).
@@ -21,7 +21,7 @@ Peer dependencies: `react`, `react-dom` (optional — only needed for React comp
 ## Quick Example
 
 ```typescript
-import { createAssetSource, buildImageUrl, imageProps } from '@nextlake/media';
+import { createAssetSource, buildImageUrl, imageProps } from '@verevoir/media';
 
 // Bridge an AssetManager to the AssetSource interface
 const source = createAssetSource({
@@ -53,7 +53,7 @@ import {
   ImgproxyConfigProvider,
   ImageField,
   HotspotOverlay,
-} from '@nextlake/media';
+} from '@verevoir/media';
 
 function App() {
   return (
@@ -129,7 +129,7 @@ function App() {
 
 ## Design Decisions
 
-- **No runtime dependency on `@nextlake/assets`** — uses structural typing (duck typing).
+- **No runtime dependency on `@verevoir/assets`** — uses structural typing (duck typing).
 - **Display, not persistence** — never stores data; reads metadata and produces URLs.
 - **Deterministic URLs** — same inputs always produce the same URL, enabling CDN caching.
 - **Unsigned URLs for v1** — HMAC signing reserved for future via `key`/`salt` fields.

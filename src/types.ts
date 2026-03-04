@@ -15,7 +15,7 @@ export interface AssetInfo {
   filename: string;
 }
 
-/** Pluggable interface for resolving asset metadata. Decoupled from @nextlake/assets. */
+/** Pluggable interface for resolving asset metadata. Decoupled from @verevoir/assets. */
 export interface AssetSource {
   getAsset(id: string): Promise<AssetInfo | null>;
   listAssets(options?: { limit?: number }): Promise<AssetInfo[]>;

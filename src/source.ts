@@ -1,7 +1,7 @@
 import type { AssetInfo, AssetSource } from './types.js';
 
 /**
- * Structural type for an asset manager — duck typed to avoid importing @nextlake/assets.
+ * Structural type for an asset manager — duck typed to avoid importing @verevoir/assets.
  * Any object matching this shape will work.
  */
 interface AssetManagerLike {
@@ -37,7 +37,7 @@ export interface CreateAssetSourceOptions {
 /**
  * Create an AssetSource backed by a NextLake AssetManager.
  *
- * Uses structural typing — no import of @nextlake/assets required.
+ * Uses structural typing — no import of @verevoir/assets required.
  * The developer provides a `blobUrl` function that maps blob keys to
  * HTTP URLs (e.g. S3 presigned URLs, local dev server, CDN paths).
  */
