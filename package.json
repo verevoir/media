@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:adsurg/next-lake-media.git"
+    "url": "git+ssh://git@github.com:verevoir/media.git"
   },
   "scripts": {
     "build": "tsup",
