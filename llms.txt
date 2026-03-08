@@ -1,0 +1,118 @@
+# @verevoir/media
+
+> Display concern for assets. Deterministic imgproxy URL builder, AssetSource abstraction, image/video block definitions, React components. Depends on `@verevoir/schema`.
+
+## Install
+
+```bash
+npm install @verevoir/media
+```
+
+Peer dependencies: `react`, `react-dom`.
+
+## URL Building
+
+### buildImageUrl(asset, resize, config)
+
+Generates a deterministic imgproxy URL for an asset.
+
+```typescript
+import { buildImageUrl, buildSrcSet } from '@verevoir/media';
+
+const url = buildImageUrl(asset, { width: 800, height: 600 }, imgproxyConfig);
+const srcSet = buildSrcSet(asset, 800, 600, imgproxyConfig); // 1x and 2x
+```
+
+### ImgproxyConfig
+
+```typescript
+interface ImgproxyConfig {
+  baseUrl: string; // e.g. 'https://imgproxy.example.com'
+  sourceBaseUrl: string; // e.g. 'https://storage.googleapis.com/my-bucket'
+}
+```
+
+## AssetSource
+
+Bridges AssetManager to display components via structural typing (no import from @verevoir/assets).
+
+```typescript
+import { createAssetSource } from '@verevoir/media';
+
+const assetSource = createAssetSource({
+  manager: assetManager, // any object with get/list/upload/updateMetadata
+  blobUrl: (id) => `https://cdn.example.com/assets/${id}`,
+});
+```
+
+## Block Definitions
+
+Pre-defined blocks for image and video content:
+
+```typescript
+import { imageBlock, videoBlock } from '@verevoir/media';
+
+// imageBlock fields: asset (reference), alt, caption
+// videoBlock fields: asset (reference), caption
+```
+
+## React Components & Providers
+
+### AssetSourceProvider
+
+```tsx
+import { AssetSourceProvider } from '@verevoir/media';
+
+<AssetSourceProvider source={assetSource}>
+  <App />
+</AssetSourceProvider>
+```
+
+### ImgproxyConfigProvider
+
+```tsx
+import { ImgproxyConfigProvider } from '@verevoir/media';
+
+<ImgproxyConfigProvider config={{ baseUrl: '...', sourceBaseUrl: '...' }}>
+  <App />
+</ImgproxyConfigProvider>
+```
+
+### ImageField
+
+Asset picker with preview. For use in block editors.
+
+```tsx
+import { ImageField } from '@verevoir/media';
+
+<ImageField value={assetId} onChange={setAssetId} />
+```
+
+### HotspotOverlay
+
+Click-to-set focal point overlay for images.
+
+```tsx
+import { HotspotOverlay } from '@verevoir/media';
+
+<HotspotOverlay hotspot={hotspot} onChange={setHotspot} src={imageUrl} />
+```
+
+### imageProps(asset, width, height, config)
+
+Render helper that returns `{ src, srcSet, alt, width, height }` for an `<img>` tag.
+
+```typescript
+import { imageProps } from '@verevoir/media';
+
+const props = imageProps(asset, 800, 600, config);
+// <img {...props} />
+```
+
+## Types
+
+```typescript
+interface AssetInfo { id: string; contentType: string; filename: string; width: number | null; height: number | null; hotspot: Hotspot | null; alt: string | null; }
+interface Hotspot { x: number; y: number; } // 0-1 range, focal point
+interface ResizeOptions { width?: number; height?: number; }
+```
