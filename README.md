@@ -135,6 +135,11 @@ function App() {
 - **Unsigned URLs for v1** — HMAC signing reserved for future via `key`/`salt` fields.
 - **Sharp-free** — no image processing. imgproxy handles all resizing at serve time.
 
+## Documentation
+
+- [Media](https://verevoir.io/docs/media) — assets, imgproxy URLs, and image display
+- [Integration Guide](https://verevoir.io/docs/integration) — connecting content models, storage, editor, and more
+
 ## Development
 
 ```bash
