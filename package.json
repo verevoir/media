@@ -1,6 +1,6 @@
 {
   "name": "@verevoir/media",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "description": "Media display — deterministic URL builder, AssetSource abstraction, and rendering helpers for Verevoir",
   "homepage": "https://verevoir.io",
   "license": "MIT",

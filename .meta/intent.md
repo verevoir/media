@@ -22,7 +22,7 @@ Handle the display side of assets — build deterministic image URLs for imgprox
 
 - **Separate from assets.** Assets is a persistence concern (upload, store, retrieve). Media is a display concern (URLs, components, rendering). Separating them means a project can use the media package's URL builder without depending on the assets package at all.
 - **Structural typing, no import.** The `AssetSource` interface and `createAssetSource` adapter use structural typing (duck typing) — no runtime import of `@verevoir/assets`. Any object matching the `AssetManagerLike` shape works. This avoids a hard dependency and keeps the package tree clean.
-- **imgproxy specifically.** imgproxy is open-source, self-hosted, and produces deterministic URLs from a simple path convention. This fits NextLake's "library, not platform" philosophy — the developer runs their own image proxy rather than depending on a SaaS.
+- **imgproxy specifically.** imgproxy is open-source, self-hosted, and produces deterministic URLs from a simple path convention. This fits Verevoir's "library, not platform" philosophy — the developer runs their own image proxy rather than depending on a SaaS.
 - **Block definitions included.** `imageBlock` and `videoBlock` are defined here using `@verevoir/schema` so the schema engine is the only dependency. These blocks standardise how images and videos are referenced in content.
 
 ## Constraints

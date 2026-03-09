@@ -1,12 +1,12 @@
 # @verevoir/media — Media Display
 
-Display concern for NextLake assets — deterministic URL builder for imgproxy, AssetSource abstraction, and rendering helpers.
+Display concern for Verevoir assets — deterministic URL builder for imgproxy, AssetSource abstraction, and rendering helpers.
 
 ## What It Does
 
 - **URL Builder** — `buildImageUrl()` and `buildSrcSet()` produce deterministic imgproxy URLs from asset metadata and resize options. Pure functions, no side effects.
 - **AssetSource** — pluggable interface for resolving asset metadata. Decoupled from `@verevoir/assets` via structural typing (duck typing).
-- **Adapter** — `createAssetSource()` bridges a NextLake `AssetManager` to the `AssetSource` interface. Developer provides a `blobUrl` function to map blob keys to HTTP URLs.
+- **Adapter** — `createAssetSource()` bridges a Verevoir `AssetManager` to the `AssetSource` interface. Developer provides a `blobUrl` function to map blob keys to HTTP URLs.
 
 ## Design Principles
 

@@ -35,7 +35,7 @@ export interface CreateAssetSourceOptions {
 }
 
 /**
- * Create an AssetSource backed by a NextLake AssetManager.
+ * Create an AssetSource backed by a Verevoir AssetManager.
  *
  * Uses structural typing — no import of @verevoir/assets required.
  * The developer provides a `blobUrl` function that maps blob keys to

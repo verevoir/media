@@ -1,6 +1,6 @@
 # @verevoir/media
 
-Display concern for NextLake assets — deterministic imgproxy URL builder, AssetSource abstraction, image/video block definitions, and React editor components.
+Display concern for Verevoir assets — deterministic imgproxy URL builder, AssetSource abstraction, image/video block definitions, and React editor components.
 
 ## What It Does
 
