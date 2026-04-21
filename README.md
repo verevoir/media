@@ -135,16 +135,17 @@ function App() {
 - **Unsigned URLs for v1** — HMAC signing reserved for future via `key`/`salt` fields.
 - **Sharp-free** — no image processing. imgproxy handles all resizing at serve time.
 
-## Documentation
+## Where it sits
 
-- [Media](https://verevoir.io/docs/media) — assets, imgproxy URLs, and image display
-- [Integration Guide](https://verevoir.io/docs/integration) — connecting content models, storage, editor, and more
+- **[@verevoir/assets](https://www.npmjs.com/package/@verevoir/assets)** — the metadata source. `createAssetSource({ manager, blobUrl })` bridges an `AssetManager` to the `AssetSource` interface this package consumes.
+- **[@verevoir/schema](https://www.npmjs.com/package/@verevoir/schema)** — compose `imageBlock` and `videoBlock` with the rest of your content model.
+- **[@verevoir/editor](https://www.npmjs.com/package/@verevoir/editor)** — pair with the editor's field components for asset picking + hotspot editing inside a larger form.
 
-## Development
+## Docs
 
-```bash
-npm install    # Install dependencies
-make build     # Compile TypeScript
-make test      # Run test suite
-make lint      # Check formatting
-```
+- [Media](https://verevoir.io/docs/media)
+- [Integration guide](https://verevoir.io/docs/integration)
+
+## License
+
+MIT
